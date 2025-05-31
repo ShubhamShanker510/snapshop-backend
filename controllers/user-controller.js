@@ -104,8 +104,12 @@ const loginUser=async(req,res)=>{
         }
 
         res.cookie('accessToken', accessToken, {
-            maxAge: 30 * 60 * 1000, 
+            httpOnly: true,
+            secure: true,
+            sameSite: 'None',
+            maxAge: 30 * 60 * 1000
           });
+          
           
 
         return res.status(200).json({
